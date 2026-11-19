@@ -3,7 +3,7 @@
 ## 1. Số liệu luyện tập
 - F1 theo seed (rule / cross_check / overall), đo bằng `score_findings.py` (làm tròn 1 chữ số):
 
-  | Seed | Chỉ lỗi luật | Lỗi luật + **báo hết** ứng viên (chưa xem ảnh) | Sau review |
+  | Seed | Chỉ lỗi luật | Lỗi luật + **báo hết** ứng viên (chưa xem ảnh) | Sau review (verdict do Claude xem ảnh, xem `prompts.md` dòng 4) |
   |---|---|---|---|
   | 9007 (luyện tập) | 1.0 / — / 0.8 (14 lỗi) | 1.0 / 0.4 / 0.7 (29 lỗi) | 1.0 / 0.5 / 0.8 (23 lỗi: 14 luật + 9 gán nhãn `confirmed`, 6 `rejected`) |
   | 1234 (seed phụ) | 1.0 / — / 0.7 (11 lỗi) | 1.0 / 0.5 / 0.8 (27 lỗi) | không review |
@@ -11,7 +11,7 @@
 
   Khi "báo hết", ứng viên `class_swap_or_category_swap` được tính là `class_swap` (chưa mở ảnh nên không biết bên nào sai).
 - Số ứng viên trên lô sạch (`inject_release.py --seed 5 --no-faults`, 50 ảnh): **4**, cả 4 đều là `instance_merge` (2 ở ảnh `000000059044`, 1 ở `000000060899`, 1 ở `000000061171`).
-- Hàng đợi trên seed luyện tập 9007: **15 ứng viên / 15 ảnh** (9 `instance_merge`, 3 `class_swap_or_category_swap`, 2 `bbox_drift`, 1 `missing_box`). Seed phụ: 1234 có 17, 4242 có 17. Hàng đợi nhỏ, cả nhóm xem hết trong thời gian cho phép.
+- Hàng đợi trên seed luyện tập 9007: **15 ứng viên / 15 ảnh** (9 `instance_merge`, 3 `class_swap_or_category_swap`, 2 `bbox_drift`, 1 `missing_box`). Seed phụ: 1234 có 17, 4242 có 17. Hàng đợi đủ nhỏ để xem hết 15 ảnh.
 - Ngưỡng đã chọn và cách chọn (không dùng `_private`): ghép box ↔ segment bằng **tỉ lệ pixel mask nằm trong box** (không chỉ IoU bbox), bỏ segment `iscrowd`, bỏ vật nhỏ (segment < 600 px), bỏ ảnh đã dính lỗi luật (mỗi ảnh nhiều nhất một lỗi). Chi tiết ngưỡng trong `validator/cross_check.py`. Lô sạch cho thấy `instance_merge` là luật gây nhiễu nhiều nhất (4/4 ứng viên trên lô sạch), nên mọi ứng viên `instance_merge` đều phải mở ảnh kiểm kỹ: người đứng sau bị che thường làm một segment trùm vào hai box.
 
 ## 2. Vì sao báo hết ứng viên làm F1 giảm?
