@@ -1,16 +1,16 @@
 image,type,verdict,note
-000000001353,instance_merge,confirmed,hai đứa trẻ ngồi toa tàu: bé áo xám (box 3) và bé phía sau bên phải (box 1) bị tô chung một segment person
-000000001818,bbox_drift,rejected,"ngựa vằn mẹ và con sát nhau, vật bị cắt ở mép ảnh; box ôm phần ngựa trong khung, lệch do vật tràn ra ngoài ảnh"
-000000002923,class_swap,confirmed,"vật là thuyền/xà lan trên mặt nước cạnh cần cẩu; detection ghi broccoli sai, panoptic ghi boat đúng"
-000000005001,instance_merge,rejected,"segment chỉ phủ ông hói đeo kính áo caro; box 15 là người đứng sau bị che, chồng box tự nhiên"
-000000007108,instance_merge,confirmed,segment elephant phủ con voi giữa và lan sang con voi phủ bụi đỏ phía sau bên phải (box 4)
-000000012639,class_swap,confirmed,"người ngồi ghế xếp áo trắng trên bãi cỏ; detection ghi dog sai, panoptic ghi person đúng"
-000000013729,instance_merge,rejected,"segment chỉ phủ cô gái váy trắng; người áo phông trắng phía sau (box 7) có segment riêng, box chồng tự nhiên"
-000000014831,bbox_drift,rejected,"cận cảnh lông mèo phủ gần hết ảnh; lệch tâm nhỏ (0.08) do vật tràn khung, không thấy box lệch rõ"
-000000015335,instance_merge,confirmed,segment person phủ người đàn ông áo xám và lan lên người ngồi bàn phía sau góc trên phải (box 8)
-000000016010,instance_merge,confirmed,hai con ngựa vằn: con đang gặm cỏ phía trước và con phía sau lộ chân bên phải (box 4) bị gộp một segment
-000000016502,category_swap,confirmed,"con cừu lông trắng đứng trên mỏm đá; detection ghi sheep đúng, panoptic ghi sink sai"
-000000017182,instance_merge,confirmed,segment book phủ cuốn bìa đen đầu hàng và cuốn kế bên (box 2) thành một khối
-000000017627,instance_merge,rejected,"segment chỉ phủ xe sedan trắng; box 13 là xe phía sau bị che phần lớn, chồng box tự nhiên"
-000000019109,instance_merge,rejected,"hàng xe máy đỗ sát nhau; segment là một chiếc xe nằm chéo, khó thấy hai xe bị gộp"
-000000025386,missing_box,confirmed,"ghế máy bay sọc xanh dưới chân người ngồi lộ rõ, panoptic có segment chair nhưng detection không có box chair"
+000000001353,instance_merge,rejected,"hai đứa trẻ ngồi toa tàu, bé phía sau bị che khuất một phần bởi bé phía trước, chồng lấn tự nhiên"
+000000001818,instance_merge,confirmed,"hai con ngựa vằn đứng sát nhau, panoptic tô chung một segment duy nhất phủ lên cả hai con ngựa"
+000000002923,class_swap,confirmed,"chiếc thuyền lớn trên mặt nước cạnh cần cẩu, detection ghi broccoli sai, panoptic ghi boat đúng"
+000000005001,instance_merge,rejected,"người đàn ông đeo kính áo caro, người phía sau bị che khuất thân người, chồng box tự nhiên"
+000000007108,instance_merge,rejected,"con voi phía sau bị con voi phía trước che khuất một phần thân, đây là trường hợp che khuất tự nhiên"
+000000012639,class_swap,confirmed,"người phụ nữ ngồi ghế xếp áo trắng trên bãi cỏ, detection ghi dog sai, panoptic ghi person đúng"
+000000013729,instance_merge,rejected,"cô gái váy trắng và người phía sau đứng chen chúc che khuất nhau, phân đoạn tự nhiên của COCO"
+000000014831,bbox_drift,confirmed,"khung box detection của con mèo bị trượt lệch tâm rõ rệt, cắt cụt phần thân và hở khoảng trống"
+000000015335,instance_merge,rejected,"quán ăn đông người, người ngồi bàn phía sau bị che khuất bởi người ngồi trước, chồng lấn tự nhiên"
+000000016010,instance_merge,rejected,"hai con ngựa vằn đứng đè lên nhau trên đồng cỏ, mask gộp do che khuất tự nhiên không phải lỗi gài"
+000000016502,category_swap,confirmed,"con cừu lông trắng đứng trên mỏm đá, detection ghi sheep đúng, mask panoptic ghi nhầm thành sink"
+000000017182,instance_merge,rejected,"các cuốn sách xếp sát nhau trên giá thành một hàng dài, sự chồng lấn tự nhiên của vật thể COCO"
+000000017627,instance_merge,rejected,"xe ô tô sedan trắng bị xe phía sau che một phần đuôi, các xe đỗ sát nhau là chồng lấn tự nhiên"
+000000019109,instance_merge,rejected,"bãi đỗ xe máy san sát nhau, các xe đỗ chéo đè lên tầm nhìn của nhau, chồng lấn tự nhiên"
+000000025386,missing_box,confirmed,"ghế đệm sọc xanh dưới chân người ngồi lộ rõ, panoptic có segment chair nhưng detection thiếu box"
