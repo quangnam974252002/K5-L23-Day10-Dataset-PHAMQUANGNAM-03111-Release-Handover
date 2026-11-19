@@ -5,7 +5,7 @@
 
 | Họ và tên | MSHV | Tài khoản GitHub | Phần chính |
 |---|---|---|---|
-| Phạm Quang Nam | 2A202603111 | github.com/quangnam974252002 | bàn giao / truy vết>> |
+| Phạm Quang Nam | 2A202603111 | github.com/quangnam974252002 | bàn giao, truy vết |
 | Trần Đức Hải | 2A202603151 | github.com/HaiiTran | validator luật |
 | Nguyễn Sơn Tùng | 2A202603053 | github.com/sontung-aithucchien | validator luật |
 | Đào Vũ Ngọc Anh | 2A202603071 | github.com/DaoVuNgocAnh1709 | đối chiếu, review |
