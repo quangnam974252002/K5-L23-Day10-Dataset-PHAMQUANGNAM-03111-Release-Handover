@@ -204,8 +204,8 @@ def main() -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps({"errors": errors}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.candidates:
-        args.candidates.parent.mkdir(parents=True, exist_ok=True)
-        args.candidates.write_text('{"candidates": []}\n', encoding="utf-8")
+        from cross_check import run_cross_check
+        run_cross_check(delivery, args.candidates, args.out)
     print(f"Wrote {len(errors)} findings to {args.out}")
     return 0
 
