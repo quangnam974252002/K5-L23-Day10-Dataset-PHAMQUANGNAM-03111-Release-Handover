@@ -5,7 +5,7 @@
 
   | Seed | Chỉ lỗi luật | Lỗi luật + **báo hết** ứng viên (chưa xem ảnh) | Sau review |
   |---|---|---|---|
-  | 9007 (luyện tập) | 1.0 / — / 0.8 (14 lỗi) | 1.0 / 0.4 / 0.7 (29 lỗi) | <<điền sau khi chốt review_log>> |
+  | 9007 (luyện tập) | 1.0 / — / 0.8 (14 lỗi) | 1.0 / 0.4 / 0.7 (29 lỗi) | 1.0 / 0.5 / 0.8 (23 lỗi: 14 luật + 9 gán nhãn `confirmed`, 6 `rejected`) |
   | 1234 (seed phụ) | 1.0 / — / 0.7 (11 lỗi) | 1.0 / 0.5 / 0.8 (27 lỗi) | không review |
   | 4242 (seed phụ) | 1.0 / — / 0.7 (12 lỗi) | 1.0 / 0.4 / 0.7 (29 lỗi) | không review |
 
