@@ -1,8 +1,12 @@
-# Nhóm <<XX>>
+# Nhóm 009
 
-- Seed luyện tập: <<số>>
-- Repo: <<URL>>
+- Seed luyện tập: 9007
+- Repo: [K5-L23-Day10-Dataset-PHAMQUANGNAM-03111-Release-Handover](https://github.com/quangnam974252002/K5-L23-Day10-Dataset-PHAMQUANGNAM-03111-Release-Handover)
 
 | Họ và tên | MSHV | Tài khoản GitHub | Phần chính |
 |---|---|---|---|
-| <<>> | <<>> | <<>> | <<validator luật / đối chiếu / review / bàn giao / truy vết / bảo mật>> |
+| Phạm Quang Nam | 2A202603111 | github.com/quangnam974252002 | <<validator luật / đối chiếu / review / bàn giao / truy vết / bảo mật>> |
+| Trần Đức Hải | 2A202603151 | github.com/HaiiTran | validator luật |
+| Nguyễn Sơn Tùng | 2A202603053 | github.com/sontung-aithucchien | validator luật |
+| Đào Vũ Ngọc Anh | 2A202603071 | github.com/DaoVuNgocAnh1709 | <<validator luật / đối chiếu / review / bàn giao / truy vết / bảo mật>> |
+| Đoàn Quang Minh | 2A202603228 | github.com/doanquangminh14 | <<validator luật / đối chiếu / review / bàn giao / truy vết / bảo mật>> |
