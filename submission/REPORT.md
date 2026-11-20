@@ -18,7 +18,13 @@
 F1 là trung bình điều hoà của precision và recall; báo thừa làm precision giảm y như bỏ sót làm recall giảm. Trên seed 9007, nộp thêm toàn bộ 15 ứng viên (không xem ảnh) làm F1 tổng **giảm từ 0.8 xuống 0.7**, F1 lỗi gán nhãn chỉ **0.4**: phần lớn ứng viên là lệch tự nhiên giữa detection và panoptic của COCO (người bị che, vật chồng nhau), không phải lỗi. Lô sạch không có lỗi nào vẫn sinh 4 ứng viên, đúng loại nhiễu đó. Ngoài ra, chưa xem ảnh thì không phân biệt được `class_swap` với `category_swap`, nên đoán một phía sẽ sai một phần. Chỉ giữ ứng viên đã `confirmed` sau khi xem ảnh thì giữ được recall mà không mất precision.
 
 ## 3. Quyết định và lineage
-<<QC v1 a/b, kết luận, vì sao R-021 phải xem lại hoặc train lại.>>
+- **Kết quả QC v1 (`lab250_29f82c6d3554`):** Bộ kiểm phát hiện 20 lỗi (14 lỗi luật mức file + 6 lỗi gán nhãn thực tế) trên tổng số 250 ảnh. Tỉ lệ lỗi là **20 / 250 = 8.0%**.
+- **Kết luận quyết định:** Theo quy chuẩn bàn giao dataset (ngưỡng lỗi cho phép $\le 2\%$), tỉ lệ lỗi 8.0% vượt xa ngưỡng chấp nhận. Do đó, quyết định chất lượng cho bản v1 là **HOLD** (giữ lại, không phát hành).
+- **Phân tích độ ảnh hưởng (Blast Radius):**
+  Lệnh `python scripts/lineage.py impact --release-id lab250_29f82c6d3554` trả về:
+  `R-021: affected=True action=review_or_retrain`
+- **Vì sao run `R-021` phải xem lại hoặc train lại?**
+  Run huấn luyện `R-021` đã dùng trực tiếp dataset v1 làm dữ liệu đầu vào. Do v1 chứa các lỗi gán nhãn sai lệch (nhầm lớp đối tượng, trôi bounding box) và lỗi cấu trúc, mô hình đã học theo các mẫu dữ liệu bẩn đó. Việc phát hành phiên bản sửa lỗi v2 không thể tự động khắc phục các trọng số (weights) đã được huấn luyện của mô hình. Do đó, run `R-021` bắt buộc phải được đánh giá lại (review) hoặc huấn luyện lại hoàn toàn (retrain) trên dataset v2 sạch trước khi triển khai production.
 
 ## 4. Hash chứng minh gì, không chứng minh gì?
 <<>>
