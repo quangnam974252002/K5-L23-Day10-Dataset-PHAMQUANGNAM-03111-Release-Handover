@@ -1,4 +1,4 @@
-# Báo cáo nhóm <<XX>>
+# Báo cáo nhóm PHAMQUANGNAM
 
 ## 1. Số liệu luyện tập
 - F1 theo seed (rule / cross_check / overall), đo bằng `score_findings.py` (làm tròn 1 chữ số):
@@ -27,7 +27,12 @@ F1 là trung bình điều hoà của precision và recall; báo thừa làm pre
   Run huấn luyện `R-021` đã dùng trực tiếp dataset v1 làm dữ liệu đầu vào. Do v1 chứa các lỗi gán nhãn sai lệch (nhầm lớp đối tượng, trôi bounding box) và lỗi cấu trúc, mô hình đã học theo các mẫu dữ liệu bẩn đó. Việc phát hành phiên bản sửa lỗi v2 không thể tự động khắc phục các trọng số (weights) đã được huấn luyện của mô hình. Do đó, run `R-021` bắt buộc phải được đánh giá lại (review) hoặc huấn luyện lại hoàn toàn (retrain) trên dataset v2 sạch trước khi triển khai production.
 
 ## 4. Hash chứng minh gì, không chứng minh gì?
-<<>>
+- **Hash chứng minh điều gì (Tính toàn vẹn - Data Integrity):**
+  - Mã băm SHA-256 (trong `manifest.csv` và `lab250_29f82c6d3554_v2.sha256`) chứng minh rằng từng byte dữ liệu của file (ảnh, nhãn) khi chuyển giao đến tay đội ngũ AI giữ nguyên vẹn 100% so với lúc xuất xưởng.
+  - Đảm bảo file không bị sửa lén, không bị lỗi hỏng đường truyền hoặc chuyển đổi định dạng ngắt dòng (CRLF/LF), và các nhãn trong v2 giữ nguyên trạng thái gốc từ lúc gán (`H7`), không bị can thiệp sửa tay trái quy trình.
+- **Hash KHÔNG chứng minh điều gì (Tính đúng đắn ngữ nghĩa - Semantic Correctness):**
+  - Mã hash không thể chứng minh nhãn bên trong có gán đúng sự thật hay không. Một file nhãn bị gán sai lớp đối tượng (như cừu thành bò trong `class_swap`), bị trôi bounding box (`bbox_drift`), hay bị bỏ sót vật thể (`missing_box`) vẫn sinh ra một mã SHA-256 hoàn toàn hợp lệ.
+  - Do đó, hash chỉ bảo vệ tính toàn vẹn kỹ thuật của file, không thể thay thế cho các bước kiểm soát chất lượng (QC tự động bằng luật và kiểm duyệt thủ công bằng mắt người).
 
 ## 5. Truy vết
 - **Ticket (`incoming/ticket.md`):** model train trên lô v1 hay bỏ sót `cup` bị che hoặc ở mép ảnh; team AI thấy rõ ở `scene_303` và `scene_859`.
@@ -40,4 +45,5 @@ F1 là trung bình điều hoà của precision và recall; báo thừa làm pre
 - **Hạn chế:** tiêu chí "có ít nhất một box `cup`" chỉ tìm được ảnh đã gán ít nhất một cốc. Ảnh v1.2 mà mọi cốc đều bị bỏ (không có box `cup` nào) sẽ không bị lọc ra; muốn tìm phải đối chiếu với panoptic (segment `cup` không có box tương ứng).
 
 ## 6. Bug hoặc điểm chưa rõ trong lab (nếu có)
-<<>>
+- **Hiện tượng lệch mã băm do chuyển đổi ngắt dòng CRLF trên Windows:** Môi trường Windows có xu hướng tự động đổi ngắt dòng của file text sang `\r\n` (CRLF), làm thay đổi mã băm SHA-256 của 240 file nhãn `.txt` vốn nguyên bản là `\n` (LF) từ `delivery/`, gây hiểu nhầm là "sửa nhãn bằng tay" ở tiêu chí H7. Nhóm đã cấu hình file `.gitattributes` để chuẩn hóa `eol=lf` cho toàn bộ các file nhãn, mã nguồn và dữ liệu log trong repo.
+- Ngoài ra, các script của ban tổ chức (`check_handover.py`, `score_findings.py`, `pack_release.py`, `lineage.py`) hoạt động ổn định và đúng thiết kế.
