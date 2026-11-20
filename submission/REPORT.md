@@ -30,7 +30,14 @@ F1 là trung bình điều hoà của precision và recall; báo thừa làm pre
 <<>>
 
 ## 5. Truy vết
-<<Tiêu chí tầng a/b, vì sao lấy guideline theo job.>>
+- **Ticket (`incoming/ticket.md`):** model train trên lô v1 hay bỏ sót `cup` bị che hoặc ở mép ảnh; team AI thấy rõ ở `scene_303` và `scene_859`.
+- **Nguyên nhân (`guideline/changelog.md`):** v1.3 chỉ đổi quy tắc của lớp `cup`: vật bị che trên 50% hoặc cắt ở mép ảnh **vẫn phải gán box**, còn v1.2 cho phép bỏ qua. Ảnh thuộc job làm theo v1.2 vì thế có thể thiếu box `cup`, và model học theo.
+- **Tiêu chí:**
+  - **Tầng a:** ảnh thuộc `scene_303` hoặc `scene_859`, nằm trong job có guideline **v1.2**, và có ít nhất một box detection lớp `cup` trong `labels/` của lô v1. Kết quả **4 ảnh**: `000000002157`, `000000002431` (scene_859), `000000002592`, `000000002685` (scene_303).
+  - **Tầng b:** ảnh ở các cảnh khác, cùng điều kiện (job v1.2, có box `cup`), chưa được team AI báo. Kết quả **3 ảnh**: `000000003661` (scene_763), `000000003845`, `000000003934` (scene_454).
+- **Vì sao lấy guideline theo job:** guideline được áp cho cả job khi job được tạo (ghi trong `jobs.csv`). Guideline ghi ở từng ảnh trong `metadata.json` có thể sai, chính là lỗi `guideline_mismatch` mà validator bắt. Lấy theo ảnh sẽ lọc sai tập ảnh. Theo `jobs.csv`, các job v1.2 là J01, J02, J03.
+- **Báo ai:** cả 7 ảnh tầng a và b đều thuộc job **J02**, nên báo **A03** (người gán) và **Q01** (người kiểm). J01 (A03/Q03) và J03 (A05/Q01) cũng theo v1.2 nhưng không có ảnh nào có box `cup`, nên không nằm trong phạm vi báo. Các job khác của A03 (J04, J06) theo v1.3 nên không bị ảnh hưởng.
+- **Hạn chế:** tiêu chí "có ít nhất một box `cup`" chỉ tìm được ảnh đã gán ít nhất một cốc. Ảnh v1.2 mà mọi cốc đều bị bỏ (không có box `cup` nào) sẽ không bị lọc ra; muốn tìm phải đối chiếu với panoptic (segment `cup` không có box tương ứng).
 
 ## 6. Bug hoặc điểm chưa rõ trong lab (nếu có)
 <<>>
