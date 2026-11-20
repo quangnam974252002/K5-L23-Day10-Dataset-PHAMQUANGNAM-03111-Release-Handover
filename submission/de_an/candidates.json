@@ -1,0 +1,100 @@
+{
+  "candidates": [
+    {
+      "image": "img_0004",
+      "suggested_type": "instance_merge",
+      "score": 1.356,
+      "detail": "Segment PAN[1288850] lớp 'cow' (area=901) gộp 2 box DET[7] & DET[8]"
+    },
+    {
+      "image": "img_0008",
+      "suggested_type": "instance_merge",
+      "score": 1.165,
+      "detail": "Segment PAN[1340525] lớp 'person' (area=12417) gộp 2 box DET[11] & DET[21]"
+    },
+    {
+      "image": "img_0012",
+      "suggested_type": "class_swap_or_category_swap",
+      "score": 0.982,
+      "detail": "Box DET[4] ghi 'chair' nhưng Mask PAN[10050906] ghi 'bench' (IoU=0.98, seg_in_box=1.00)"
+    },
+    {
+      "image": "img_0022",
+      "suggested_type": "instance_merge",
+      "score": 1.153,
+      "detail": "Segment PAN[1155025] lớp 'person' (area=60824) gộp 2 box DET[1] & DET[5]"
+    },
+    {
+      "image": "img_0027",
+      "suggested_type": "class_swap_or_category_swap",
+      "score": 0.973,
+      "detail": "Box DET[0] ghi 'traffic light' nhưng Mask PAN[1944881] ghi 'elephant' (IoU=0.97, seg_in_box=1.00)"
+    },
+    {
+      "image": "img_0029",
+      "suggested_type": "instance_merge",
+      "score": 1.098,
+      "detail": "Segment PAN[12854257] lớp 'bus' (area=91686) gộp 2 box DET[0] & DET[1]"
+    },
+    {
+      "image": "img_0033",
+      "suggested_type": "instance_merge",
+      "score": 1.123,
+      "detail": "Segment PAN[11076138] lớp 'person' (area=4154) gộp 2 box DET[10] & DET[14]"
+    },
+    {
+      "image": "img_0044",
+      "suggested_type": "bbox_drift",
+      "score": 0.228,
+      "detail": "DET[0] & PAN[5991998] lớp 'person': lệch tâm=0.23, IoU=0.55, seg_in_box=0.73"
+    },
+    {
+      "image": "img_0055",
+      "suggested_type": "instance_merge",
+      "score": 1.391,
+      "detail": "Segment PAN[13818917] lớp 'car' (area=11010) gộp 2 box DET[1] & DET[4]"
+    },
+    {
+      "image": "img_0061",
+      "suggested_type": "instance_merge",
+      "score": 1.0,
+      "detail": "Segment PAN[2321371] lớp 'truck' (area=20480) gộp 2 box DET[1] & DET[2]"
+    },
+    {
+      "image": "img_0090",
+      "suggested_type": "instance_merge",
+      "score": 1.527,
+      "detail": "Segment PAN[136412] lớp 'umbrella' (area=6157) gộp 2 box DET[0] & DET[3]"
+    },
+    {
+      "image": "img_0124",
+      "suggested_type": "class_swap_or_category_swap",
+      "score": 0.986,
+      "detail": "Box DET[0] ghi 'kite' nhưng Mask PAN[3166103] ghi 'bird' (IoU=0.99, seg_in_box=1.00)"
+    },
+    {
+      "image": "img_0147",
+      "suggested_type": "instance_merge",
+      "score": 1.224,
+      "detail": "Segment PAN[13002448] lớp 'car' (area=1388) gộp 2 box DET[1] & DET[8]"
+    },
+    {
+      "image": "img_0162",
+      "suggested_type": "instance_merge",
+      "score": 1.279,
+      "detail": "Segment PAN[8056325] lớp 'person' (area=2549) gộp 2 box DET[9] & DET[11]"
+    },
+    {
+      "image": "img_0191",
+      "suggested_type": "missing_box",
+      "score": 0.029,
+      "detail": "Thiếu box cho segment PAN[13830730] lớp 'person' (area=4564 px, chiếm 2.9% ảnh)"
+    },
+    {
+      "image": "img_0217",
+      "suggested_type": "class_swap_or_category_swap",
+      "score": 0.997,
+      "detail": "Box DET[0] ghi 'orange' nhưng Mask PAN[5857237] ghi 'apple' (IoU=1.00, seg_in_box=1.00)"
+    }
+  ]
+}
